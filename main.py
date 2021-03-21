@@ -3,7 +3,8 @@ import pandas as pd
 
 
 # Prepare yahoo finance call
-tickers = ["TSLA"]
+tickers = input("Enter tickers to track: (seperate by comma and space) ").split(", ")
+print("Loading tickers: ", tickers)
 
 data = YahooFinancials(tickers)
 
@@ -46,4 +47,7 @@ df = df.reset_index()
 df = df.set_index(["type", "data"])
 
 # Write
-df.to_csv("out.csv", index=True)
+outfile = input("To what file would you like to write to (path): ")
+df.to_csv(outfile, index=True)
+
+print("Loaded data successfully to ", outfile)
